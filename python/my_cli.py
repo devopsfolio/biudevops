@@ -1,10 +1,12 @@
 def main_loop():
-    result = ''
-    while(result != "quit"):    
+
+    while(True):    
         print("hello>", end='')
         input_line = input()
         if input_line:
-            the_command, args = parse_command(input_line)
+            if input_line != "quit":
+                the_command, args = parse_command(input_line)
+            else: break
         else: continue
         if is_legit(the_command):
             print(run_command(the_command, args))
@@ -22,7 +24,12 @@ def run_add_command(args):
 def run_count_command(line):
     return len(line)
 
-legit_commands = {'add': run_add_command,'count': run_count_command}
+
+
+legit_commands = {
+                    'add': run_add_command,
+                    'count': run_count_command,     
+                }
 
 def is_legit(cmd):
     if cmd in legit_commands:
