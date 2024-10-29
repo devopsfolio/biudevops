@@ -12,32 +12,27 @@ def main_loop():
             print(run_command(the_command, args))
         else: print(input_line + " --> is not a legit command")
 
-def parse_command(some_input):
-    input_items = some_input.split()
+def parse_command(user_input):
+    input_items = user_input.split()
     first_item, rest_items = input_items[0], input_items[1:]
     return [first_item, rest_items]
 
-def run_add_command(args):
-    ints_args = [int(item) for item in args]
+def run_add_command(user_args):
+    ints_args = [int(item) for item in user_args]
     return sum(ints_args)
 
-def run_count_command(line):
-    return len(line)
+def run_count_command(user_input):
+    return len(user_input)
 
+legit_cmds = { 'add': run_add_command, 'count': run_count_command }
 
-
-legit_commands = {
-                    'add': run_add_command,
-                    'count': run_count_command,     
-                }
-
-def is_legit(cmd):
-    if cmd in legit_commands:
+def is_legit(user_cmd):
+    if user_cmd in legit_cmds:
         return True
     else: 
         return False
 
-def run_command(command, some_args):
-    return legit_commands[command](some_args)
+def run_command(user_cmd, user_args):
+    return legit_cmds[user_cmd](user_args)
 
 main_loop()
