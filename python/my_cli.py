@@ -3,7 +3,9 @@ def main_loop():
     while(result != "quit"):    
         print("hello>", end='')
         input_line = input()
-        the_command, args = parse_command(input_line)
+        if input_line:
+            the_command, args = parse_command(input_line)
+        else: continue
         if is_legit(the_command):
             print(run_command(the_command, args))
         else: print(input_line + " --> is not a legit command")
