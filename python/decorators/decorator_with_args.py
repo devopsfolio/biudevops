@@ -63,9 +63,11 @@ say_hello()
 @repeat(2)
 def add(a, b):
     print(f"Суммируем {a} и {b}")
-    print(a + b)
+    return a + b
 # Вызов функции:
-add(105, 381)
+result = add(105, 381)
+
+print(result)
 
 
 
