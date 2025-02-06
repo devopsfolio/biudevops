@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "index.html"  # Trigger only when index.html is modified
+      - "cicd/workflow/html/index.html"  # Trigger only when index.html is modified
 
 jobs:
   deploy:
